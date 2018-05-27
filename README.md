@@ -2,7 +2,7 @@
 
 Cracking the formula of a popular game through test-driven development
 
-## Getting started
+## Install all the necessary devDependencies
 ```bash
 npm install
 ```
