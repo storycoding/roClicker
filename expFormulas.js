@@ -8,7 +8,8 @@ const medium = function(lvl) {
     cost += accumulator;
     accumulator += 2;
   }
-  return cost + lvl;}
+  return cost + lvl;
+}
 
 const hard = function(lvl) {
   let cost = 1;
@@ -26,11 +27,12 @@ const costToLvl = function(lvl, expType) {
     total += expType(i);
   }
 
-  return total;}
+  return total;
+}
 
 module.exports = {
   easy: easy,
   medium: medium,
   hard: hard,
   costToLvl : costToLvl
-};
+}
