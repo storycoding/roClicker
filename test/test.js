@@ -32,16 +32,14 @@ describe('cards', () => {
 	for (let key in cards) {
 		let seq = cards[key].sequence;
 		
-		for (let i = 0; i < seq.length; i++) {
+		describe(key, () => {
 
-			describe(key, () => {
-			  it(
-			  	`${key} lvl ${(i+1) * 10}: function should return same value`,
-			  	() => assert.equal(cards[key].formula((i+1) * 10), seq[i])
-			  );
-			});
-
-		}	
+			for (let i = 0; i < seq.length; i++) {
+			  it( `${key} lvl ${(i+1) * 10}: function should return same value`,
+			  	() => assert.equal(cards[key].formula((i+1) * 10), seq[i]));
+			}	
+			
+		});
 	}
 
 });
