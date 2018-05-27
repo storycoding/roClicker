@@ -1,7 +1,12 @@
 const exp = require ('./expFormulas.js');
 
-const round = function(number) {
+const duoDecimal = function(number) {
   let factor = Math.pow(10, 2);
+  return Math.round(number * factor) / factor;
+}
+
+const round = function(number) {
+  let factor = Math.pow(10, 0);
   return Math.round(number * factor) / factor;
 }
 
@@ -13,13 +18,31 @@ const units = {
   },
 
   archangeling : {
-    formula: (lvl) => (lvl * 5),
+    formula: (lvl) => {
+      let val = 0;
+      let add = 25;
+
+      for (var i = 1; i <= lvl; i++) {
+        val += ( add - Math.floor( i / 10) );
+      }
+
+      return val;
+    },
     sequence: [ 249, 488, 717, 936, 1145 ],
     exp: exp.easy
   },
 
   angeling : {
-    formula: (lvl) =>  (lvl * 25),
+    formula: (lvl) => {
+      let val = 0;
+      let add = 25;
+
+      for (var i = 1; i <= lvl; i++) {
+        val += ( add - Math.floor( i / 10) );
+      }
+      
+      return val;
+    },
     sequence: [249, 488, 717, 936, 1145],
     exp: exp.easy
   },
@@ -49,13 +72,13 @@ const units = {
   },
 
   phreeoni: {
-    formula: (lvl) => round(lvl * 0.24 - (lvl / 24)),
+    formula: (lvl) => duoDecimal(lvl * 0.24 - (lvl / 24)),
     sequence: [ 2.37, 4.53, 6.47, 8.24, 9.83 ],
     exp: exp.medium
   },
 
   eddga: {
-    formula: (lvl) => round(lvl * 0.16 - (lvl / 10)),
+    formula: (lvl) => duoDecimal(lvl * 0.16 - (lvl / 10)),
     sequence: [ 0.90, 1.64, 2.25, 2.75, 3.16 ],
     exp: exp.medium
   },
@@ -120,8 +143,74 @@ const units = {
     exp: exp.hard
   }
 
-  };
+};
 
-  module.exports = {
-    units: units
-  };
+
+const testUnits = {
+
+  phreeoni: {
+    formula: (lvl) => duoDecimal(lvl * 0.24 - (lvl / 24)),
+    sequence: [ 2.37, 4.53, 6.47, 8.24, 9.83 ],
+    exp: exp.medium
+  },
+
+  eddga: {
+    formula: (lvl) => duoDecimal(lvl * 0.16 - (lvl / 10)),
+    sequence: [ 0.90, 1.64, 2.25, 2.75, 3.16 ],
+    exp: exp.medium
+  },
+
+  drake: {
+    formula: (lvl) => (lvl * 3.79),
+    sequence: [ 37.62, 74.50, 110.64, 146.07, 180.80 ],
+    exp: exp.medium
+  },
+
+  beelzebub: {
+    formula: (lvl) => (lvl * 1.92),
+    sequence: [ 17.17, 30.41, 40.61, 48.49, 54.56 ],
+    exp: exp.medium
+  },
+
+  bacsojin: {
+    formula: (lvl) => (lvl * 1),
+    sequence: [ 8.64, 14.80, 19.18, 22.30, 24.51 ],
+    exp: exp.medium
+  },
+
+  moonlight : {
+    formula: (lvl) => (lvl * 0.32),
+    sequence: [ 3.04, 5.72, 8.07, 10.13, 11.94 ],
+    exp: exp.medium
+  },
+
+  mistress: {
+    formula: (lvl) => (lvl * 1),
+    sequence: [ 9.06, 16.48, 22.55, 27.53, 31.60 ],
+    exp: exp.medium
+  },
+
+  lordOfDeath: {
+    formula: (lvl) => (lvl * 5),
+    sequence: [50, 100, 140, 180, 210],
+    exp: exp.medium
+  },
+
+  maya: {
+    formula: (lvl) => (lvl * 0.19),
+    sequence: [ 1.90, 3.62, 5.18, 6.59, 7.86 ],
+    exp: exp.medium
+  },
+
+  thanatos: {
+    formula: (lvl) => (lvl * 0.99),
+    sequence: [ 9.06, 16.48, 22.55, 27.53, 31.60 ],
+    exp: exp.medium
+  },
+
+};
+
+module.exports = {
+  units: units,
+  testUnits: testUnits
+};
