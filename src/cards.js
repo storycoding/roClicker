@@ -120,7 +120,19 @@ const units = {
   },
 
   lordOfDeath: {
-    formula: (lvl) => (lvl * 5),
+
+
+    formula: (lvl) => {
+      let val = 0;
+      let add = 5;
+
+      for (var i = 0; i < lvl; i++) {
+        let stage = Math.floor( i / 20);
+        val += stage < 5 ? (add - stage) : (add - 4);
+      }
+      
+      return val;
+    },
     sequence: [50, 100, 140, 180, 210],
     exp: exp.medium
   },
