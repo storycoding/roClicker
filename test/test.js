@@ -1,9 +1,17 @@
-const assert = require('assert');
-const cards = require('../cards.js').testUnits;
-const exp = require('../expFormulas.js');
+// in order for tests to work both in browser and server
+// use try catch to require assets and export modules at the end
+
+try {
+  var assert = require('assert');
+	var cards = require('../src/cards.js').units;
+	var exp = require('../src/expFormulas.js');
+}
+catch(error) {
+	console.log("running tests on the browser")
+}
 
 
-xdescribe('exp formulas', () => {
+describe('exp formulas', () => {
 	describe('exp easy', () => {
 		it(
 			'The function should return the same value',
@@ -38,7 +46,7 @@ describe('cards', () => {
 			  it( `${key} lvl ${(i+1) * 10}: function should return same value`,
 			  	() => assert.equal(cards[key].formula((i+1) * 10), seq[i]));
 			}	
-			
+
 		});
 	}
 
