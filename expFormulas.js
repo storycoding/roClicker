@@ -18,7 +18,8 @@ const hard = function(lvl) {
     cost = cost * 2;
   }
 
-  return cost;}
+  return cost;
+}
 
 const costToLvl = function(lvl, expType) {
   let total = 0;
