@@ -6,11 +6,11 @@
   "scripts": {
     "test": "mocha",
     "browserify": "browserify test/test.js -o test_browser/bundle.js"
-
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^16.2.2",
     "mocha": "^5.2.0"
   }
 }
