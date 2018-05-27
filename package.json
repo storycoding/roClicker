@@ -4,7 +4,9 @@
   "description": "cracking the roClicker formula",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "browserify": "browserify test/test.js -o test_browser/bundle.js"
+
   },
   "author": "",
   "license": "ISC",
