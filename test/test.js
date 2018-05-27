@@ -1,6 +1,3 @@
-// in order for tests to work both in browser and server
-// use try catch to require assets and export modules at the end
-
 try {
   var assert = require('assert');
 	var cards = require('../src/cards.js').units;
