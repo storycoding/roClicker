@@ -11,6 +11,7 @@ const round = function(number) {
 }
 
 const units = {
+
   garm : {
     formula: (lvl) =>  (lvl * 5),
     sequence: [ 50, 100, 150, 200, 250 ],
@@ -82,16 +83,35 @@ const units = {
     sequence: [ 0.90, 1.64, 2.25, 2.75, 3.16 ],
     exp: exp.medium
   },
-
+  
   drake: {
-    formula: (lvl) => (lvl * 3.79),
-    sequence: [ 37.62, 74.50, 110.64, 146.07, 180.80 ],
+    formula: (lvl) => {
+      let val = 0;
+      let add = 3.79;
+
+      for (var i = 1; i <= lvl; i++) {
+        val += duoDecimal(add - (i * 0.006));
+      }
+
+      return val;
+    },
+    sequence: [ 37.62, 74.50, 110.64, 146.07, 180.80, 214.85, 248.21, 280.92, 312.98, 344.41 ],
     exp: exp.medium
   },
 
   beelzebub: {
-    formula: (lvl) => (lvl * 1.92),
-    sequence: [ 17.17, 30.41, 40.61, 48.49, 54.56 ],
+    formula: (lvl) => {
+      let val = 0;
+      let add = 1.92;
+
+      for (var i = 1; i <= lvl; i++) {
+        add =  add - (0.04 - i * 0.00046)
+        val = duoDecimal(val + add);
+      }
+
+      return val;
+    },
+    sequence: [ 17.17, 30.41, 40.61, 48.49, 54.56, 60.0000, 62.84, 65.63, 67.77, 69.42 ],
     exp: exp.medium
   },
 
@@ -109,7 +129,7 @@ const units = {
 
   mistress: {
     formula: (lvl) => (lvl * 1),
-    sequence: [ 9.06, 16.48, 22.55, 27.53, 31.60 ],
+    sequence: [ 9.06, 16.48, 22.55, 27.53, 31.60, 35.77, 38.33 ],
     exp: exp.medium
   },
 
