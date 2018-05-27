@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "browserify": "browserify test/test.js -o test_browser/bundle.js"
+    "browserify": "browserify test/test.js -o test_browser/bundle.js",
+    "mocha-client": "open test_browser/test.html"
   },
   "author": "",
   "license": "ISC",
